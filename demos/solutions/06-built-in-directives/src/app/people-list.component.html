@@ -1,0 +1,37 @@
+
+<h1>
+  All the cool people!
+</h1>
+
+<label>New person</label>
+<input #firstNameTR />
+<button (click)="AddPerson(firstNameTR.value)">Add person</button>
+<div *ngFor="let person of people">
+  {{ person.name.first }}
+</div>
+
+<section class="person-list">
+  <section *ngFor="let person of people" class="card">
+    <div class="card-header">
+      <h3 class="card-title">{{ person.name.first }} {{ person.name.last }} </h3>
+    </div>
+    <div class="card-body row">
+      <div class="col-sm-3">
+        <img [src]="person.picture.large" alt="{{ person.name.first }}" class="img-fluid rounded-circle" />
+      </div>
+      <div class="col-sm-9">
+        <ul class="list-group">
+          <li class="list-group-item">Phone: {{ person.phone }}</li>
+          <li class="list-group-item">Address:
+            <br /> {{ person.location?.street }}
+            <br /> {{ person.location?.city }}
+            <span *ngIf="person.location">
+              , </span>
+            {{person.location?.state}} {{ person.location?.postcode }}
+          </li>
+          <li class="list-group-item">Email: {{ person.email }}</li>
+          <li class="list-group-item">Gender: {{ person.gender }}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
