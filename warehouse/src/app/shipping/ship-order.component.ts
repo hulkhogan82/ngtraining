@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Order } from '../shared/Order';
 import { OrderLine } from '../shared/OrderLine';
 import { Product } from '../shared/Product';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'nw-ship-order',
@@ -13,11 +14,14 @@ export class ShipOrderComponent implements OnInit {
 
   public order: Order;
 
-  constructor() { }
+  constructor(private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    const orderID = this._route.snapshot.params['orderID'];
     this.order = new Order();
-    this.order.id = 1;
+    this.order.id = orderID;
+
+    //this.order.id = 1;
     this.order.orderDate = new Date();
     this.order.shipVia = 1;
     this.order.shipping = 10;
