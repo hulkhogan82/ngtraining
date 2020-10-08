@@ -6,7 +6,8 @@ import { Product } from '../shared/Product';
 @Component({
   selector: 'nw-ship-order',
   templateUrl: './ship-order.component.html',
-  styleUrls: ['./ship-order.component.css']
+  styleUrls: ['./ship-order.component.css'],
+  styles: ['.big-checkbox {transform : scale(2)}']
 })
 export class ShipOrderComponent implements OnInit {
 
