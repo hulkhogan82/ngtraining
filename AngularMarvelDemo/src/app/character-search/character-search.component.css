@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.character-card {
+  width: 320px;
+  margin: 10px;
+}
+.character-card > .mdl-card__title {
+  color: #fff;
+}
+
+.character-card img {
+  width: 320px;
+}

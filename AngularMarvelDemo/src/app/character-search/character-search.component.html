@@ -1,0 +1,38 @@
+<form #searchForm="ngForm">
+  <div>
+    <label>Search string</label>
+    <input [(ngModel)]="searchString"
+    required
+    pattern="[a-zA-Z]+"
+    id="searchString"
+    name="searchString"
+    #searchStringTR="ngModel" />
+  </div>
+  <p *ngIf="searchStringTR.touched && searchStringTR.invalid">Yo, that's bad data!</p>
+  <div>
+    <label><input type="checkbox" [(ngModel)]="isPartialMatch" name="isPartialMatch" />
+      Partial match?</label>
+  </div>
+<button [disabled]="searchForm.invalid" (click)="fetchCharacters(searchString)">Get Characters</button>
+</form>
+<p>You are searching for ... {{ searchString }}</p>
+<div class="wrapper">
+
+  <section *ngFor="let character of characters">
+  <div class="character-card mdl-card mdl-shadow--8dp">
+    <div class="mdl-card__title mdl-card--expand">
+      <img [src]="character.imageUrl" [alt]="character.name" />
+    </div>
+    <h2 class="mdl-card__title-text">{{ character.name }}</h2>
+
+    <div class="mdl-card__supporting-text">
+      {{character.description}}
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        View Updates
+      </a>
+    </div>
+  </div>
+</section>
+</div>
