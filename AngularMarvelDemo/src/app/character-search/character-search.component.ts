@@ -9,8 +9,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CharacterSearchComponent implements OnInit {
   public characters: any;
+  public marvelApiKey:string = '399be848cd869eff0ef2177690b0ef8a';
   //private baseUrl: string = `https://gateway.marvel.com:443/v1/public/characters?apikey=${marvelApiKey}`;
-  private baseUrl: string = `https://gateway.marvel.com:443/v1/public/characters`;
+  private baseUrl: string = `https://gateway.marvel.com:443/v1/public/characters?apikey=${this.marvelApiKey}`;
   constructor(private _http: HttpClient) { }
   public searchString:string ="";
   public isPartialMatch: boolean = false;
